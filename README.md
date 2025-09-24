@@ -2,7 +2,7 @@
 
 A comprehensive, lab-ready solution for receiving and managing data from multiple LSL (Lab Streaming Layer) streams. This repository provides both a Python library and a Streamlit web interface for easy configuration and monitoring.
 
-![Home Screen](docs/images/home_screen.png)
+![Home Screen](docs/images/running_stream.png)
 *Main dashboard interface showing real-time stream monitoring and control*
 
 ## ✨ Features
