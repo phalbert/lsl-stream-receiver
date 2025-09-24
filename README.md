@@ -184,8 +184,6 @@ lsl-stream-receiver/
 - **Quality Dashboard**: Built-in data quality assessment and alerts
 - **Export Tools**: Flexible data export and analysis capabilities
 
-![Configuration Interface](docs/images/Screenshot%202025-09-24%20at%2015.35.38.png)
-*Configuration panel with stream discovery, recording settings, and quality monitoring controls*
 
 ## Use Cases
 
