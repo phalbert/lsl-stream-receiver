@@ -1,0 +1,57 @@
+# Virtual environment
+venv/
+.venv/
+env/
+.env/
+
+# Python cache files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+.pytest_cache/
+.coverage
+htmlcov/
+*.egg-info/
+dist/
+build/
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Data directories (uncomment if you want to ignore data)
+# lsl_data/
+# study_data/
+
+# Log files
+*.log
+logs/
+
+# Temporary files
+.tmp/
+temp/
+*.tmp
+
+# Streamlit secrets
+.streamlit/secrets.toml
+
+# Jupyter notebooks (if any)
+.ipynb_checkpoints/
+
+# Documentation builds
+docs/_build/
+docs/build/
+
+# Test artifacts
+.tox/
+.cache/
