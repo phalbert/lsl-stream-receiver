@@ -16,7 +16,7 @@
 #   make format        # Format code
 #
 
-.PHONY: help setup install app dev examples test clean docs lint format venv-check
+.PHONY: help setup install app dev examples test clean docs lint format venv-check user-guide dev-guide architecture
 
 # Default target
 help:
@@ -41,6 +41,9 @@ help:
 	@echo ""
 	@echo "Documentation:"
 	@echo "  make docs          # Generate documentation"
+	@echo "  make user-guide    # Open user guide"
+	@echo "  make dev-guide     # Open development guide"
+	@echo "  make architecture  # Open architecture guide"
 	@echo ""
 	@echo "Examples:"
 	@echo "  make example-basic        # Run basic receiver example"
@@ -315,6 +318,43 @@ status:
 	done
 	@echo ""
 	@echo "Ready to use: $(GREEN)make app$(NC) or $(GREEN)make examples$(NC)"
+
+# Documentation targets
+user-guide: venv-check
+	@echo "$(GREEN)Opening User Guide...$(NC)"
+	@if command -v xdg-open >/dev/null 2>&1; then \
+		xdg-open docs/user_guide.md; \
+	elif command -v open >/dev/null 2>&1; then \
+		open docs/user_guide.md; \
+	elif command -v start >/dev/null 2>&1; then \
+		start docs/user_guide.md; \
+	else \
+		echo "$(YELLOW)Please open docs/user_guide.md in your browser$(NC)"; \
+	fi
+
+dev-guide: venv-check
+	@echo "$(GREEN)Opening Development Guide...$(NC)"
+	@if command -v xdg-open >/dev/null 2>&1; then \
+		xdg-open docs/development.md; \
+	elif command -v open >/dev/null 2>&1; then \
+		open docs/development.md; \
+	elif command -v start >/dev/null 2>&1; then \
+		start docs/development.md; \
+	else \
+		echo "$(YELLOW)Please open docs/development.md in your browser$(NC)"; \
+	fi
+
+architecture: venv-check
+	@echo "$(GREEN)Opening Architecture Guide...$(NC)"
+	@if command -v xdg-open >/dev/null 2>&1; then \
+		xdg-open docs/architecture.md; \
+	elif command -v open >/dev/null 2>&1; then \
+		open docs/architecture.md; \
+	elif command -v start >/dev/null 2>&1; then \
+		start docs/architecture.md; \
+	else \
+		echo "$(YELLOW)Please open docs/architecture.md in your browser$(NC)"; \
+	fi
 
 # Default target when just running 'make'
 all: setup

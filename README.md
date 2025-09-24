@@ -27,67 +27,26 @@ make setup          # Creates venv and installs everything
 make app           # Starts the Streamlit web application
 ```
 
-### 📦 Manual Installation
-
-```bash
-git clone <repository-url>
-cd lsl-stream-receiver
-python3 -m venv venv
-source venv/bin/activate
-pip install -r requirements.txt
-```
-
 ### 💻 Usage Options
 
 **Option 1: Web Interface (Easiest)**
-
-The Streamlit web interface provides a user-friendly way to configure, monitor, and manage your LSL streams:
-
 ```bash
 make app
 # Open browser to http://localhost:8501
 ```
 
-The interface includes:
-- **Dashboard**: Real-time stream status and metrics
-- **Stream Management**: Detailed view of connected streams with metadata
-- **Data Tab**: View recent data samples and export options
-- **Settings**: Configure recording parameters and quality monitoring
-
-![Stream Status](docs/images/stream_status.png)
-*Stream status dashboard showing connected streams, sample counts, and error monitoring*
-
-![Stream Details](docs/images/stream_details.png)
-*Detailed stream information including metadata, sampling rates, and quality metrics*
-
 **Option 2: Python Script**
-
-For programmatic access or integration into other applications:
-
 ```python
 from lsl_receiver import StreamManager
-
-# Create stream manager
 manager = StreamManager()
-
-# Start receiving data
 manager.start_receiving()
-
-# Access latest data
-for stream_name, stream_data in manager.get_latest_data().items():
-    print(f"{stream_name}: {stream_data}")
-
-# Stop receiving
+data = manager.get_latest_data()
 manager.stop_receiving()
 ```
 
 **Option 3: Interactive Examples**
-
-Explore different usage patterns with our example scripts:
-
 ```bash
-make examples
-# Select from menu of example scripts
+make examples  # Select from menu of example scripts
 ```
 
 ### 📋 Available Make Commands
@@ -104,86 +63,34 @@ make examples
 | `make format` | Format code with black |
 | `make help` | Show all available commands |
 
-## 🔧 Development & Automation
-
-This repository includes a comprehensive Makefile that automates common development and usage tasks:
-
-### 🏗️ Environment Setup
-- **`make setup`** - Creates virtual environment and installs all dependencies
-- **`make install`** - Updates dependencies in existing environment
-- **`make venv-check`** - Verifies virtual environment setup
-
-### 🎛️ Application Control
-- **`make app`** - Start the Streamlit web application
-- **`make dev`** - Start in development mode with hot reload
-- **`make examples`** - Interactive menu to run example scripts
-
-### 🛠️ Development Tools
-- **`make test`** - Run unit tests
-- **`make lint`** - Code quality checks (flake8, pylint)
-- **`make format`** - Format code with black
-- **`make clean`** - Remove temporary files
-- **`make clean-all`** - Remove everything including virtual environment
-
-### 📚 Documentation & Quality
-- **`make docs`** - Generate documentation
-- **`make health`** - Run system health check
-- **`make status`** - Show project status
-
-### 🚀 Quick Workflow
-```bash
-git clone <repository-url>
-cd lsl-stream-receiver
-make setup          # 🏗️ Setup everything
-make app           # 🎛️ Start the app
-make examples      # 📝 Try examples
-make clean         # 🧹 Clean up
-```
-
-## Architecture
+## Architecture Overview
 
 ```
 lsl-stream-receiver/
 ├── lsl_receiver/           # Core Python library
-│   ├── __init__.py
 │   ├── core.py            # Main receiver and stream management
-│   ├── stream_manager.py  # Multi-stream coordination
-│   └── utils.py           # Utility functions
+│   ├── data_logger.py     # Data logging functionality
+│   └── quality_assessor.py # Quality assessment
 ├── streamlit_app/         # Web interface
-│   ├── app.py            # Main Streamlit application
-│   └── config.py         # Configuration management
+│   └── app.py            # Main Streamlit application
 ├── examples/             # Usage examples
 │   ├── basic_receiver.py
 │   ├── csv_logger.py
 │   └── real_time_plotter.py
 ├── docs/                # Documentation
-│   ├── usage.md
-│   └── api.md
+│   ├── user_guide.md    # Detailed usage and examples
+│   ├── development.md    # Development and API reference
+│   ├── architecture.md   # System architecture details
+│   └── contributing.md  # Contributing guidelines
 └── tests/              # Unit tests
-    ├── test_core.py
-    └── test_integration.py
 ```
 
-## Key Components
+## 📖 Documentation
 
-### StreamManager
-- **Automatic Discovery**: Discovers and connects to available LSL streams
-- **Multi-rate Support**: Manages multiple streams with different sampling rates
-- **Resilient Connection**: Handles stream disconnections and reconnections
-- **Synchronized Access**: Provides thread-safe, synchronized data access
-
-### Data Logger
-- **Multiple Formats**: Configurable output formats (CSV, JSON, HDF5)
-- **Rich Metadata**: Comprehensive metadata collection and preservation
-- **Quality Tracking**: Quality metrics and signal statistics
-- **Session Management**: Organized, timestamped data sessions
-
-### Streamlit Interface
-- **Live Monitoring**: Real-time stream status and data visualization
-- **Interactive Config**: Easy-to-use controls for all parameters
-- **Quality Dashboard**: Built-in data quality assessment and alerts
-- **Export Tools**: Flexible data export and analysis capabilities
-
+- **📚 [User Guide](docs/user_guide.md)** - Detailed usage examples, configuration, and tutorials
+- **🔧 [Development Guide](docs/development.md)** - API reference, architecture details, and development setup
+- **🤝 [Contributing](docs/contributing.md)** - Guidelines for contributing to the project
+- **📝 [Quick Start](docs/quick_start.md)** - Step-by-step setup instructions
 
 ## Use Cases
 
@@ -200,174 +107,6 @@ Streamline your lab workflow with robust multi-device coordination:
 - **Real-time Validation**: Live data quality checking and alerts
 - **Automated Storage**: Hands-off data logging with metadata
 - **Quality Monitoring**: Continuous signal quality assessment
-
-### ⚙️ Development and Testing
-Accelerate your development cycle with comprehensive testing tools:
-- **Stream Simulation**: Generate test streams for validation
-- **Protocol Testing**: Verify LSL protocol compliance
-- **Performance Analysis**: Benchmark stream throughput and latency
-- **Integration Testing**: Test with real and simulated devices
-
-### 📊 Real-time Monitoring
-Monitor your streams in real-time with comprehensive dashboards showing:
-- Live signal quality metrics
-- Connection status and error rates
-- Data throughput and buffer levels
-- Stream metadata and sampling rates
-
-*Example monitoring session with multiple physiological sensors connected*
-
-## Configuration
-
-### Stream Discovery
-- Automatic discovery of all available LSL streams
-- Manual specification of target streams
-- Stream type and metadata validation
-
-### Data Storage
-- Configurable output directories
-- Multiple format support
-- Metadata inclusion options
-- Quality metrics logging
-
-### Quality Control
-- Signal quality assessment
-- Missing data detection
-- Sampling rate validation
-- Stream stability monitoring
-
-## 📸 Interface Gallery
-
-### Dashboard Overview
-![Main Dashboard](docs/images/home_screen.png)
-*Main application interface with stream status and control panel*
-
-### Stream Monitoring
-![Stream Status](docs/images/stream_status.png)
-*Real-time stream status showing connected sensors and data flow*
-
-### Detailed Stream Information
-![Stream Details](docs/images/stream_logging.png)
-*Comprehensive stream metadata and quality metrics*
-
-### Quality Check
-![Stream Details](docs/images/quality_check.png)
-*Comprehensive stream metadata and quality metrics*
-
-
-### Configuration Panel
-![Configuration](docs/images/settings.png)
-*Settings and configuration interface for recording parameters*
-
-## 🤝 Contributing
-
-We welcome contributions from lab members and the broader research community! Whether you're fixing bugs, adding new features, improving documentation, or suggesting enhancements, your contributions are valuable to us.
-
-### 🚀 Quick Start for Contributors
-
-1. **Fork** the repository to your GitHub account
-2. **Clone** your fork locally: `git clone https://github.com/your-username/lsl-stream-receiver.git`
-3. **Create** a feature branch: `git checkout -b feature/your-feature-name`
-4. **Make** your changes with proper tests
-5. **Test** thoroughly: `make test`
-6. **Commit** with clear messages: `git commit -m "Add: Brief description of changes"`
-7. **Push** to your fork: `git push origin feature/your-feature-name`
-8. **Create** a Pull Request to the main repository
-
-### 📝 Contribution Guidelines
-
-#### Code Standards
-- **Style**: Follow PEP 8 conventions with `black` formatting
-- **Types**: Use type hints for all function parameters and return values
-- **Documentation**: Include docstrings for all public functions and classes
-- **Testing**: Add unit tests for new functionality
-- **Linting**: Ensure code passes `flake8` and `pylint` checks
-
-#### Testing Requirements
-- **Unit Tests**: Test individual components in isolation
-- **Integration Tests**: Test complete workflows and interactions
-- **Coverage**: Aim for >90% test coverage for new code
-- **Real Data**: Include tests with realistic LSL stream simulation
-
-#### Documentation Updates
-- **README**: Update usage examples and feature descriptions
-- **API Docs**: Update docstrings and method documentation
-- **Examples**: Add new example scripts for complex features
-- **Changelog**: Document significant changes
-
-#### Pull Request Process
-1. **Clear Description**: Explain what changes were made and why
-2. **Screenshots**: Include before/after images for UI changes
-3. **Testing**: Verify all tests pass and new tests are included
-4. **Review**: Address any feedback from maintainers
-5. **Merge**: Once approved, your changes will be merged
-
-### 🎯 Types of Contributions
-
-#### 🐛 Bug Fixes
-- **Reproduce**: Verify the bug exists and document steps
-- **Fix**: Implement the minimal fix with tests
-- **Verify**: Ensure fix works and doesn't break existing functionality
-
-#### ✨ New Features
-- **Design**: Propose feature in an issue first
-- **Implement**: Add feature with comprehensive tests
-- **Document**: Update documentation and examples
-- **Demo**: Provide usage examples
-
-#### 📚 Documentation
-- **Clarity**: Improve explanations and examples
-- **Completeness**: Fill in missing information
-- **Accuracy**: Ensure all information is up-to-date
-- **Screenshots**: Add visual examples where helpful
-
-#### 🔧 Infrastructure
-- **Build System**: Improve Makefile and automation
-- **CI/CD**: Enhance testing and deployment
-- **Dependencies**: Update packages and manage requirements
-- **Performance**: Optimize code and reduce resource usage
-
-### 🛠️ Development Setup
-
-```bash
-# Fork and clone the repository
-git clone https://github.com/your-username/lsl-stream-receiver.git
-cd lsl-stream-receiver
-
-# Set up development environment
-make setup
-make dev  # Start in development mode
-
-# Run tests and linting
-make test
-make lint
-make format  # Format code with black
-
-# Build documentation
-make docs
-```
-
-### 📋 Code Review Checklist
-
-Before submitting your PR, ensure:
-
-- [ ] **Tests pass**: All existing and new tests pass
-- [ ] **Code formatted**: `black` formatting applied
-- [ ] **Linting clean**: No flake8 or pylint errors
-- [ ] **Documentation updated**: Docstrings and README updated
-- [ ] **Type hints**: All functions have proper type annotations
-- [ ] **Real examples**: Include practical usage examples
-- [ ] **No breaking changes**: Maintain backward compatibility
-
-### 🏆 Recognition
-
-Contributors are recognized in:
-- **Changelog**: Major contributions documented
-- **README**: Core contributors listed
-- **GitHub**: Stars and contributor graphs
-- **Lab Meetings**: Outstanding contributions highlighted
-
-For detailed guidelines, see our [full contributing guide](docs/contributing.md).
 
 ## 📄 License
 
