@@ -261,7 +261,113 @@ Monitor your streams in real-time with comprehensive dashboards showing:
 
 ## 🤝 Contributing
 
-We welcome contributions from lab members! Please see our [contributing guidelines](docs/contributing.md) for details.
+We welcome contributions from lab members and the broader research community! Whether you're fixing bugs, adding new features, improving documentation, or suggesting enhancements, your contributions are valuable to us.
+
+### 🚀 Quick Start for Contributors
+
+1. **Fork** the repository to your GitHub account
+2. **Clone** your fork locally: `git clone https://github.com/your-username/lsl-stream-receiver.git`
+3. **Create** a feature branch: `git checkout -b feature/your-feature-name`
+4. **Make** your changes with proper tests
+5. **Test** thoroughly: `make test`
+6. **Commit** with clear messages: `git commit -m "Add: Brief description of changes"`
+7. **Push** to your fork: `git push origin feature/your-feature-name`
+8. **Create** a Pull Request to the main repository
+
+### 📝 Contribution Guidelines
+
+#### Code Standards
+- **Style**: Follow PEP 8 conventions with `black` formatting
+- **Types**: Use type hints for all function parameters and return values
+- **Documentation**: Include docstrings for all public functions and classes
+- **Testing**: Add unit tests for new functionality
+- **Linting**: Ensure code passes `flake8` and `pylint` checks
+
+#### Testing Requirements
+- **Unit Tests**: Test individual components in isolation
+- **Integration Tests**: Test complete workflows and interactions
+- **Coverage**: Aim for >90% test coverage for new code
+- **Real Data**: Include tests with realistic LSL stream simulation
+
+#### Documentation Updates
+- **README**: Update usage examples and feature descriptions
+- **API Docs**: Update docstrings and method documentation
+- **Examples**: Add new example scripts for complex features
+- **Changelog**: Document significant changes
+
+#### Pull Request Process
+1. **Clear Description**: Explain what changes were made and why
+2. **Screenshots**: Include before/after images for UI changes
+3. **Testing**: Verify all tests pass and new tests are included
+4. **Review**: Address any feedback from maintainers
+5. **Merge**: Once approved, your changes will be merged
+
+### 🎯 Types of Contributions
+
+#### 🐛 Bug Fixes
+- **Reproduce**: Verify the bug exists and document steps
+- **Fix**: Implement the minimal fix with tests
+- **Verify**: Ensure fix works and doesn't break existing functionality
+
+#### ✨ New Features
+- **Design**: Propose feature in an issue first
+- **Implement**: Add feature with comprehensive tests
+- **Document**: Update documentation and examples
+- **Demo**: Provide usage examples
+
+#### 📚 Documentation
+- **Clarity**: Improve explanations and examples
+- **Completeness**: Fill in missing information
+- **Accuracy**: Ensure all information is up-to-date
+- **Screenshots**: Add visual examples where helpful
+
+#### 🔧 Infrastructure
+- **Build System**: Improve Makefile and automation
+- **CI/CD**: Enhance testing and deployment
+- **Dependencies**: Update packages and manage requirements
+- **Performance**: Optimize code and reduce resource usage
+
+### 🛠️ Development Setup
+
+```bash
+# Fork and clone the repository
+git clone https://github.com/your-username/lsl-stream-receiver.git
+cd lsl-stream-receiver
+
+# Set up development environment
+make setup
+make dev  # Start in development mode
+
+# Run tests and linting
+make test
+make lint
+make format  # Format code with black
+
+# Build documentation
+make docs
+```
+
+### 📋 Code Review Checklist
+
+Before submitting your PR, ensure:
+
+- [ ] **Tests pass**: All existing and new tests pass
+- [ ] **Code formatted**: `black` formatting applied
+- [ ] **Linting clean**: No flake8 or pylint errors
+- [ ] **Documentation updated**: Docstrings and README updated
+- [ ] **Type hints**: All functions have proper type annotations
+- [ ] **Real examples**: Include practical usage examples
+- [ ] **No breaking changes**: Maintain backward compatibility
+
+### 🏆 Recognition
+
+Contributors are recognized in:
+- **Changelog**: Major contributions documented
+- **README**: Core contributors listed
+- **GitHub**: Stars and contributor graphs
+- **Lab Meetings**: Outstanding contributions highlighted
+
+For detailed guidelines, see our [full contributing guide](docs/contributing.md).
 
 ## 📄 License
 
